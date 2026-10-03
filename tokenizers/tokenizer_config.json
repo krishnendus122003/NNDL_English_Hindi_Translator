@@ -1,0 +1,15 @@
+{
+    "training_pairs": 300000,
+    "random_seed": 42,
+    "english_vocab_size": 16000,
+    "hindi_vocab_size": 16000,
+    "pad_id": 0,
+    "unk_id": 1,
+    "bos_id": 2,
+    "eos_id": 3,
+    "max_sequence_length": 64,
+    "max_content_tokens": 62,
+    "training_word_length_limit": 50,
+    "english_tokenizer": "english_bpe.model",
+    "hindi_tokenizer": "hindi_bpe.model"
+}

@@ -1,0 +1,33 @@
+{
+  "passed": 24,
+  "failed": 0,
+  "checks": [
+    "frontend opens and reaches API",
+    "default scratch Transformer and beam selected",
+    "gru greedy: I am happy.",
+    "attention greedy: I am happy.",
+    "transformer greedy: I am happy.",
+    "transformer beam: I am happy.",
+    "gru greedy: How are you?",
+    "attention greedy: How are you?",
+    "transformer greedy: How are you?",
+    "transformer beam: How are you?",
+    "gru greedy: India is a diverse country.",
+    "attention greedy: India is a diverse country.",
+    "transformer greedy: India is a diverse country.",
+    "transformer beam: India is a diverse country.",
+    "genuine attention heatmap visible with model attribution",
+    "core comparison renders three models",
+    "optional NLLB unavailable preserves core comparison",
+    "long input warning visible",
+    "clear and empty input validation",
+    "example buttons populate input",
+    "copy translation writes clipboard",
+    "mobile layout has no horizontal page overflow",
+    "API error displayed and controls recover",
+    "no uncaught browser JavaScript errors"
+  ],
+  "javascript_errors": [],
+  "browser": "Local Microsoft Edge, isolated headless context",
+  "note": "In-app browser initialization failed with Windows sandbox error 5; approved local browser fallback used."
+}

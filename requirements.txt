@@ -1,0 +1,11 @@
+torch
+sentencepiece
+fastapi
+uvicorn[standard]
+pydantic
+numpy
+transformers
+protobuf
+safetensors
+pytest
+httpx

@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <title>Transora | English to Hindi Translation</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <script
+        src="script.js"
+        defer
+    ></script>
+</head>
+
+
+<body>
+
+    <!--
+        Kept for script.js.
+        Hidden from the website.
+    -->
+    <div
+        id="connection"
+        class="connection-status"
+        hidden
+    >
+        Connecting...
+    </div>
+
+
+    <main>
+
+        <!-- =====================================================
+             HERO
+        ====================================================== -->
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <div class="hero-brand">
+
+                    <!-- TRANSORA LOGO -->
+                    <div class="hero-logo">
+                        <img
+                            src="transora-logo.png"
+                            alt="Transora Logo"
+                        >
+                    </div>
+
+
+                    <!-- BRAND TEXT -->
+                    <div class="hero-text">
+
+                        <h1 class="hero-title">
+                            Transora
+                        </h1>
+
+                        <p class="hero-subtitle">
+                            Translating English to Hindi.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             TRANSLATOR
+        ====================================================== -->
+
+        <section
+            id="translator"
+            class="translator-card"
+        >
+
+            <!-- MODEL CONTROLS -->
+
+            <div class="translator-toolbar">
+
+                <div class="field-group">
+
+                    <label for="model">
+                        Model
+                    </label>
+
+                    <select id="model">
+
+                        <option value="gru">
+                            GRU Baseline
+                        </option>
+
+                        <option value="attention">
+                            GRU + Bahdanau Attention
+                        </option>
+
+                        <option
+                            value="transformer"
+                            selected
+                        >
+                            Transformer From Scratch
+                        </option>
+
+                        <option value="nllb">
+                            NLLB
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div
+                    class="field-group"
+                    id="decoding-control"
+                >
+
+                    <label for="decoding">
+                        Decoding
+                    </label>
+
+                    <select id="decoding">
+
+                        <option value="greedy">
+                            Greedy
+                        </option>
+
+                        <option
+                            value="beam"
+                            selected
+                        >
+                            Beam Search
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <span
+                    id="model-note"
+                    class="model-note"
+                    hidden
+                ></span>
+
+            </div>
+
+
+            <!-- =====================================================
+                 INPUT / OUTPUT
+            ====================================================== -->
+
+            <div class="translation-grid">
+
+
+                <!-- ENGLISH INPUT -->
+
+                <div class="translation-pane">
+
+                    <div class="pane-heading">
+
+                        <div class="language-title">
+
+                            <span class="language-icon">
+                                EN
+                            </span>
+
+                            <strong>
+                                English
+                            </strong>
+
+                        </div>
+
+
+                        <span id="count">
+                            0 / 20,000
+                        </span>
+
+                    </div>
+
+
+                    <div class="text-area-wrap">
+
+                        <textarea
+                            id="text"
+                            maxlength="20000"
+                            placeholder="Type an English sentence..."
+                            spellcheck="true"
+                        ></textarea>
+
+
+                        <button
+                            id="clear"
+                            class="clear-input"
+                            type="button"
+                            title="Clear"
+                        >
+                            ×
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- HINDI OUTPUT -->
+
+                <div class="translation-pane">
+
+                    <div class="pane-heading">
+
+                        <div class="language-title">
+
+                            <span class="language-icon hindi-icon">
+                                अ
+                            </span>
+
+                            <strong>
+                                Hindi
+                            </strong>
+
+                        </div>
+
+
+                        <button
+                            id="copy"
+                            class="copy-button"
+                            type="button"
+                            disabled
+                        >
+                            Copy
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        id="output"
+                        lang="hi"
+                        aria-live="polite"
+                        class="translation-output placeholder"
+                    >
+                        Your translation will appear here.
+                    </div>
+
+
+                    <div
+                        id="metadata"
+                        class="translation-meta"
+                    >
+                        Ready
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- WARNING -->
+
+            <div
+                id="warning"
+                class="notice"
+                role="status"
+                hidden
+            ></div>
+
+
+            <!-- ERROR -->
+
+            <div
+                id="error"
+                class="error"
+                role="alert"
+                hidden
+            ></div>
+
+
+            <!-- TRANSLATE BUTTON -->
+
+            <button
+                id="translate"
+                class="translate-button"
+                type="button"
+            >
+                ✦ Translate
+            </button>
+
+
+            <!-- EXTRA ACTIONS -->
+
+            <div class="secondary-actions">
+
+                <button
+                    id="compare"
+                    type="button"
+                >
+                    Compare Models
+                </button>
+
+
+                <button
+                    id="attention"
+                    type="button"
+                >
+                    Show Attention
+                </button>
+
+
+                <label class="include-nllb">
+
+                    <input
+                        id="include-nllb"
+                        type="checkbox"
+                    >
+
+                    Include NLLB
+
+                </label>
+
+
+                <span
+                    id="loading"
+                    role="status"
+                    hidden
+                >
+                    Translating...
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             EXAMPLE SENTENCES
+        ====================================================== -->
+
+        <section class="examples-card">
+
+            <strong>
+                Try:
+            </strong>
+
+
+            <button
+                type="button"
+                data-example="I am happy."
+            >
+                I am happy.
+            </button>
+
+
+            <button
+                type="button"
+                data-example="How are you?"
+            >
+                How are you?
+            </button>
+
+
+            <button
+                type="button"
+                data-example="Where are you going?"
+            >
+                Where are you going?
+            </button>
+
+
+            <button
+                type="button"
+                data-example="India is a diverse country."
+            >
+                India is a diverse country.
+            </button>
+
+        </section>
+
+
+        <!-- =====================================================
+             MODEL COMPARISON
+        ====================================================== -->
+
+        <section
+            id="comparison"
+            class="analysis-panel"
+            hidden
+        >
+
+            <div class="section-title">
+                Model Comparison
+            </div>
+
+
+            <div
+                id="compare-results"
+                class="compare-grid"
+            ></div>
+
+        </section>
+
+
+        <!-- =====================================================
+             ATTENTION
+        ====================================================== -->
+
+        <section
+            id="alignment"
+            class="analysis-panel attention-panel"
+            hidden
+        >
+
+            <div class="section-title">
+                Attention
+            </div>
+
+
+            <p
+                id="attention-description"
+                class="small-description"
+            >
+                GRU + Bahdanau Attention
+            </p>
+
+
+            <p
+                id="attention-translation"
+                class="attention-translation"
+                lang="hi"
+            ></p>
+
+
+            <div
+                class="heatmap-scroll"
+                tabindex="0"
+            >
+
+                <table id="heatmap"></table>
+
+            </div>
+
+
+            <div class="legend">
+
+                <span>
+                    Low
+                </span>
+
+                <span class="gradient"></span>
+
+                <span>
+                    High
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             MODEL RESULTS
+        ====================================================== -->
+
+        <section class="results-section">
+
+            <h2>
+                Model Results
+            </h2>
+
+
+            <div class="results-grid">
+
+
+                <!-- GRU -->
+
+                <article>
+
+                    <strong>
+                        GRU
+                    </strong>
+
+                    <span>
+                        BLEU
+                        <b>1.3797</b>
+                    </span>
+
+                    <span>
+                        chrF
+                        <b>14.3026</b>
+                    </span>
+
+                </article>
+
+
+                <!-- GRU + ATTENTION -->
+
+                <article>
+
+                    <strong>
+                        GRU + Attention
+                    </strong>
+
+                    <span>
+                        BLEU
+                        <b>2.4331</b>
+                    </span>
+
+                    <span>
+                        chrF
+                        <b>18.9274</b>
+                    </span>
+
+                </article>
+
+
+                <!-- TRANSFORMER -->
+
+                <article class="transformer-result">
+
+                    <strong>
+                        Transformer
+                    </strong>
+
+                    <span>
+                        BLEU
+                        <b>5.8019</b>
+                    </span>
+
+                    <span>
+                        chrF
+                        <b>28.7418</b>
+                    </span>
+
+                </article>
+
+
+                <!-- NLLB -->
+
+                <article class="nllb-result">
+
+                    <strong>
+                        NLLB
+                    </strong>
+
+                    <span>
+                        BLEU
+                        <b>23.4315</b>
+                    </span>
+
+                    <span>
+                        chrF
+                        <b>51.0445</b>
+                    </span>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             FOOTER
+        ====================================================== -->
+
+        <footer>
+            Transora
+        </footer>
+
+    </main>
+
+</body>
+
+</html>

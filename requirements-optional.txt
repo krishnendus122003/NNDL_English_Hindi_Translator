@@ -1,0 +1,2 @@
+# Only needed for the separate, lazy pretrained reference. Not required by core tests.
+transformers

@@ -1,0 +1,22 @@
+.venv/
+.venv-*/
+__pycache__/
+*.pyc
+.pytest_cache/
+logs/predictions.jsonl
+logs/*.log
+logs/*.pid
+.test-tools/
+.cache/
+hf_cache/
+huggingface_cache/
+**/.huggingface/
+.env
+*.tmp
+*.temp
+~$*
+# Notebooks and checkpoints are deliberately not ignored. See README for large-file storage.
+# Large trained model checkpoints
+saved_models/**/*.pt
+# Large tokenizer training corpora
+tokenizers/*training_corpus*.txt

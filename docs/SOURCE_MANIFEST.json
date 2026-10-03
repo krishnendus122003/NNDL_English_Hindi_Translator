@@ -1,0 +1,222 @@
+{
+  "notebooks/01_Data_Verification_and_EDA.ipynb": {
+    "bytes": 342950,
+    "mtime_ns": 1791003806684478000,
+    "sha256": "72092312272881a1f9d8e20b9a0e2a834bdf60ab5774f1a3cdcef8c4b974ae97"
+  },
+  "notebooks/02_Data_Cleaning.ipynb": {
+    "bytes": 72773,
+    "mtime_ns": 1791003806673478300,
+    "sha256": "c7cffb8a5d0bb5b09337c01151da3bd8c3a563aacb517c08271efe5ff86110e2"
+  },
+  "notebooks/03_SentencePiece_BPE.ipynb": {
+    "bytes": 44428,
+    "mtime_ns": 1791003806668477600,
+    "sha256": "e3108b3331c0be666037b56cbdaf4e59251a9e59918cb4d381c0b471fccf198b"
+  },
+  "notebooks/04_GRU_Seq2Seq.ipynb": {
+    "bytes": 153870,
+    "mtime_ns": 1791003806678475500,
+    "sha256": "7eb0d56b64290da44671885266436614f35a492cfea0e097c21fadeec764bd38"
+  },
+  "notebooks/05_GRU_Bahdanau_Attention.ipynb": {
+    "bytes": 226817,
+    "mtime_ns": 1791003806688478000,
+    "sha256": "3e7d14338071d8b7475d3463c76e7e9f63361ecbe53b9a1944c8cfccda86e4a3"
+  },
+  "notebooks/06_Transformer_From_Scratch.ipynb": {
+    "bytes": 144148,
+    "mtime_ns": 1791003806693478000,
+    "sha256": "38fbf0af9a0b7ee3a5ad8ea0ea5d435296f25e7d26e3bd62f90f54be84efbe72"
+  },
+  "notebooks/07_Decoding_and_Evaluation.ipynb": {
+    "bytes": 13365,
+    "mtime_ns": 1791003806705477500,
+    "sha256": "8273ba297ba27103e08e39d1d3719fe5d077110720fc42a0e321f713e8c4d89d"
+  },
+  "notebooks/07_Transformer_1M_Improved.ipynb": {
+    "bytes": 279742,
+    "mtime_ns": 1791003806702478400,
+    "sha256": "5518e321aafb91afdb4b6c27f6230e0b872c61c6b5fb1fa900fab68ee59d5bee"
+  },
+  "notebooks/08_Pretrained_Tool_Assisted_Translation.ipynb": {
+    "bytes": 223270,
+    "mtime_ns": 1791003806697477600,
+    "sha256": "2a5567c5a11511148b89a54db5c4df0d143349c951c23a50a8ec6cb30e212676"
+  },
+  "results/attention_maps/attention_map_i_am_happy.png": {
+    "bytes": 110571,
+    "mtime_ns": 1791003655540806700,
+    "sha256": "39ec193a7c87852a66dac423123c0636a4e28a69170164d8ca13477b601fa920"
+  },
+  "results/attention_maps/attention_map_i_am_happy_final.png": {
+    "bytes": 126035,
+    "mtime_ns": 1791003655561088600,
+    "sha256": "f232ca6491a470d742c43c6bee613f2fb4126d10000d2e5033289e326f2fdcb8"
+  },
+  "results/attention_maps/attention_map_i_am_happy_fixed_font.png": {
+    "bytes": 64892,
+    "mtime_ns": 1791003655549806000,
+    "sha256": "0d3293688f37b1a7ddc6da782a240f39294ba9f62e4b0052ae2410320610cfc1"
+  },
+  "results/metrics/dataset_quality_summary.csv": {
+    "bytes": 168,
+    "mtime_ns": 1791003655411053500,
+    "sha256": "7cf0db6d2df1925cb20c8c94a0e53cc21e55095ad108796edca864d17f3eaa6d"
+  },
+  "results/metrics/gru_attention_training_history.csv": {
+    "bytes": 445,
+    "mtime_ns": 1791003655485520800,
+    "sha256": "7fe7a0c34cf81fb9b0906ba0e004b2f7dd8cdff03c70637668705d885944fc15"
+  },
+  "results/metrics/gru_attention_validation_metrics.csv": {
+    "bytes": 187,
+    "mtime_ns": 1791003655493288800,
+    "sha256": "2bf36609355d7bfe7773e93d3d869901484a1a9d1d967c8b3e1348de057e1eb6"
+  },
+  "results/metrics/gru_attention_validation_predictions.csv": {
+    "bytes": 283125,
+    "mtime_ns": 1791003655459043500,
+    "sha256": "560b2bd111fddc8756486327d9cab383bc92a976aac93d638f396d6c73d7e6b9"
+  },
+  "results/metrics/gru_seq2seq_training_history.csv": {
+    "bytes": 129,
+    "mtime_ns": 1791003655424530300,
+    "sha256": "251cd90bf5d632f7dbfc69345b5ff60b951f8dcb08cd2ebed1a6e7045e5a0f6f"
+  },
+  "results/metrics/gru_seq2seq_validation_metrics.csv": {
+    "bytes": 185,
+    "mtime_ns": 1791003655476265600,
+    "sha256": "bf0fb5e54f51a2d173256651ac6b7088604e08b781c009f07fda65d7646c8074"
+  },
+  "results/metrics/gru_validation_predictions.csv": {
+    "bytes": 278405,
+    "mtime_ns": 1791003655449045500,
+    "sha256": "d2a97c8a2dd0c3e72e08108dcf3c9efbce053608fc73c899aa80591f040b726c"
+  },
+  "results/metrics/tokenizer_length_statistics.csv": {
+    "bytes": 243,
+    "mtime_ns": 1791003655431529200,
+    "sha256": "6bdfea1f1a4d0d8e3132c05fcea55c75c739416dd717886dd814bdc6b3de86fa"
+  },
+  "results/metrics/transformer_from_scratch_training_history.csv": {
+    "bytes": 1339,
+    "mtime_ns": 1791003655439044400,
+    "sha256": "058b31da3ac53a147ad0a649dd1ef6dfd52e9c246e940f45ef4231d8c4f11c19"
+  },
+  "results/metrics/transformer_training_history.csv": {
+    "bytes": 616,
+    "mtime_ns": 1791003655468260500,
+    "sha256": "57ecda4a4c437889e29a72205561a1ee53f732229e3cb336775920206991ae6d"
+  },
+  "results/plots/english_sentence_length_distribution.png": {
+    "bytes": 80272,
+    "mtime_ns": 1791003655517280900,
+    "sha256": "f3a11a978f857a3e3083ac6ac0941f761632f62d7447c5262d940f26a1dc2b7a"
+  },
+  "results/plots/gru_seq2seq_loss_curve.png": {
+    "bytes": 119737,
+    "mtime_ns": 1791003655526289400,
+    "sha256": "27ac54fd54b872489017a8224ba5590e8ae42a0605d11612c51995b55c154e13"
+  },
+  "results/plots/hindi_sentence_length_distribution.png": {
+    "bytes": 80491,
+    "mtime_ns": 1791003655508283300,
+    "sha256": "3acf404319bdad7c8e2c2641c67b471ba10050d3a9c7d8a28ba0f1a3bd8d4970"
+  },
+  "saved_models/gru/gru_seq2seq_best.pt": {
+    "bytes": 225199829,
+    "mtime_ns": 1791004357861913200,
+    "sha256": "abe69be822e5f9ef7090d7c15a2aceb526d97b0aad4302f493fb2f10320bda05"
+  },
+  "saved_models/gru_attention/gru_bahdanau_best.pt": {
+    "bytes": 248827109,
+    "mtime_ns": 1791004362593883500,
+    "sha256": "1093089ce74627c84dadbc894097898ee770fb460f6d6e0fc4368f1faa59abc1"
+  },
+  "saved_models/transformer/transformer_best.pt": {
+    "bytes": 214206196,
+    "mtime_ns": 1791004359327250300,
+    "sha256": "92f8db4d16b72b96aa4bd77a00e2b0eb6e29f5fed3b570bedd2594215df5bc91"
+  },
+  "saved_models/transformer/transformer_from_scratch_best.pt": {
+    "bytes": 214242615,
+    "mtime_ns": 1791004360817224600,
+    "sha256": "763f3e891c394128512fc3e6ab016bc2d5e0409b22e47593e5d7e100c6b709f6"
+  },
+  "saved_models/transformer_1m_improved/transformer_1m_improved_best.pt": {
+    "bytes": 420473632,
+    "mtime_ns": 1791004365726377600,
+    "sha256": "4375065cfae98d0b15095d06c60026fe427663e486f287fbb91515895e9c2dde"
+  },
+  "saved_models/transformer_1m_improved/transformer_1m_resume.pt": {
+    "bytes": 420470431,
+    "mtime_ns": 1791004368825611600,
+    "sha256": "f827fc847663807f0b3cf965c459d58ce4ca562c4b92c1fb4c39dd84c7ecdcc4"
+  },
+  "tokenizers/english_bpe.model": {
+    "bytes": 503956,
+    "mtime_ns": 1791003620862015500,
+    "sha256": "cf7e2e8fb9362a7657a30c5501ec691abb7897e8b67eed94e7aa3284da4e3c00"
+  },
+  "tokenizers/english_bpe.vocab": {
+    "bytes": 236566,
+    "mtime_ns": 1791003620883013500,
+    "sha256": "cf851efc38382fbfad58789a6f29acb4c3b3e808a16d8a75646289a0390ba010"
+  },
+  "tokenizers/english_bpe_1m.model": {
+    "bytes": 503959,
+    "mtime_ns": 1791003620877031600,
+    "sha256": "7533fc3ad3312945dd04099c0e22e2b1d34417ba9447b6c0e7ddec1922bb9e98"
+  },
+  "tokenizers/english_bpe_1m.vocab": {
+    "bytes": 236566,
+    "mtime_ns": 1791003620896535700,
+    "sha256": "cf851efc38382fbfad58789a6f29acb4c3b3e808a16d8a75646289a0390ba010"
+  },
+  "tokenizers/english_training_corpus.txt": {
+    "bytes": 21366685,
+    "mtime_ns": 1791003621064236800,
+    "sha256": "6159188ae0811a1d965987715b5c8175fe8af8f0ec0104d4a4c9765be742b110"
+  },
+  "tokenizers/english_training_corpus_1m.txt": {
+    "bytes": 71320039,
+    "mtime_ns": 1791003621832809000,
+    "sha256": "e9674a6c59604de9ed7e2d27e675a8df04703567caec6605b39ab5571692433f"
+  },
+  "tokenizers/hindi_bpe.model": {
+    "bytes": 623633,
+    "mtime_ns": 1791003620922531100,
+    "sha256": "5e7f898f6ec27f3a7e85ec713d4b4cb7fa5bdada5c3391b522a16016ddb44acd"
+  },
+  "tokenizers/hindi_bpe.vocab": {
+    "bytes": 356250,
+    "mtime_ns": 1791003620907536600,
+    "sha256": "e99958145edf31e77229215ea19c25a9237f9256e3dfc4673338418a7143653e"
+  },
+  "tokenizers/hindi_bpe_1m.model": {
+    "bytes": 622671,
+    "mtime_ns": 1791003620915542600,
+    "sha256": "64a70071d5a438ca6def0a6a8a8898d73c57fb21f7c0567ec4eeb076fae5c888"
+  },
+  "tokenizers/hindi_bpe_1m.vocab": {
+    "bytes": 355282,
+    "mtime_ns": 1791003620902535100,
+    "sha256": "6b8089cb34fe914960ebe9a8646c50bdc8540056950cf62a9fc7152367780640"
+  },
+  "tokenizers/hindi_training_corpus.txt": {
+    "bytes": 52294445,
+    "mtime_ns": 1791003621317536900,
+    "sha256": "b6adf63d3b93ddf53da9d7c4ab4f58e5f869b057bf2b089637d102d7fccdc08a"
+  },
+  "tokenizers/hindi_training_corpus_1m.txt": {
+    "bytes": 174548239,
+    "mtime_ns": 1791003622670919200,
+    "sha256": "ecb9f15eabdb57f8832352efe1e82f509f06f6199e535de71e2238fffe6c0a07"
+  },
+  "tokenizers/tokenizer_config.json": {
+    "bytes": 374,
+    "mtime_ns": 1791003620889017800,
+    "sha256": "30bfcb42cc9f12c7c66ec46faa5fe092711a8369ad698c4d22c3e0548027f5c1"
+  }
+}

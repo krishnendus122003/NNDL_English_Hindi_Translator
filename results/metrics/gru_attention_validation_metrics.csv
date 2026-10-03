@@ -1,0 +1,2 @@
+model,decoding,best_epoch,best_validation_loss,validation_bleu,validation_chrf,parameters
+GRU + Bahdanau Attention,Greedy,4,6.520715561180102,3.241286018073338,20.62411438409161,20733569

@@ -1,0 +1,3077 @@
+/* =========================================================
+   TRANSORA
+   English to Hindi Neural Machine Translation
+========================================================= */
+
+:root {
+    --bg: #020b18;
+    --panel: #07192d;
+    --panel-light: #0b2039;
+
+    --border: #194d79;
+    --border-light: #245d8e;
+
+    --text: #f4f8ff;
+    --muted: #8da5bd;
+
+    --blue: #1d78ff;
+    --cyan: #25c9ef;
+    --green: #27d4a5;
+
+    --radius: 18px;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    margin: 0;
+
+    min-height: 100vh;
+
+    color: var(--text);
+
+    background:
+        radial-gradient(
+            circle at 8% 3%,
+            rgba(18, 91, 170, 0.21),
+            transparent 28%
+        ),
+        linear-gradient(
+            180deg,
+            #020b18,
+            #041223
+        );
+
+    font-size: 16px;
+    font-weight: 500;
+
+    overflow-x: hidden;
+}
+
+
+button,
+select,
+textarea,
+input {
+    font: inherit;
+}
+
+
+button {
+    cursor: pointer;
+}
+
+
+button:disabled {
+    cursor: default;
+    opacity: 0.55;
+}
+
+
+[hidden] {
+    display: none !important;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.topbar {
+    height: 76px;
+
+    padding:
+        0 6%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    background:
+        rgba(2, 10, 23, 0.95);
+
+    backdrop-filter:
+        blur(18px);
+
+    border-bottom:
+        1px solid
+        rgba(39, 86, 132, 0.45);
+}
+
+
+.brand {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    color: white;
+
+    text-decoration: none;
+}
+
+
+.brand-icon {
+    position: relative;
+
+    width: 46px;
+    height: 46px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #176fff,
+            #28c9ef
+        );
+
+    color: white;
+
+    font-size: 21px;
+    font-weight: 900;
+
+    box-shadow:
+        0 0 25px
+        rgba(23, 111, 255, 0.35);
+}
+
+
+.brand-icon span {
+    position: absolute;
+
+    right: -7px;
+    bottom: -5px;
+
+    width: 23px;
+    height: 23px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 7px;
+
+    background: white;
+
+    color: #126fea;
+
+    border:
+        2px solid #020b18;
+
+    font-size: 13px;
+}
+
+
+.brand > span:last-child {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.brand strong {
+    font-size: 21px;
+    font-weight: 900;
+
+    letter-spacing: -0.3px;
+}
+
+
+.brand small {
+    margin-top: 3px;
+
+    color: #8fa7c0;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+.connection-status {
+    color: #5de4ba;
+
+    font-size: 11px;
+    font-weight: 750;
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+main {
+    width:
+        min(
+            1450px,
+            calc(100% - 44px)
+        );
+
+    margin:
+        0 auto;
+
+    padding-bottom:
+        35px;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    position: relative;
+
+    min-height: 390px;
+
+    margin:
+        22px 0 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(28, 106, 175, 0.8);
+
+    border-radius:
+        20px;
+
+    background-image:
+
+        linear-gradient(
+            90deg,
+            rgba(1, 9, 22, 0.97) 0%,
+            rgba(2, 15, 34, 0.88) 35%,
+            rgba(1, 12, 26, 0.46) 65%,
+            rgba(0, 8, 18, 0.10) 100%
+        ),
+
+        url("india-gate-bg.png");
+
+    background-size:
+        cover;
+
+    background-position:
+        center 48%;
+
+    background-repeat:
+        no-repeat;
+
+    box-shadow:
+        0 20px 55px rgba(0, 0, 0, 0.38);
+}
+
+
+
+.hero-content {
+    position: relative;
+
+    z-index: 2;
+
+    padding:
+        55px 65px;
+}
+
+
+
+/* =========================================================
+   LOGO + TRANSORA
+========================================================= */
+
+.hero-brand {
+    display: flex;
+
+    align-items: center;
+
+    gap: 24px;
+}
+
+
+
+/* MAIN LOGO */
+
+.hero-logo {
+    position: relative;
+
+    flex:
+        0 0 auto;
+
+    width: 82px;
+
+    height: 82px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #176fff,
+            #24c9ef
+        );
+
+    box-shadow:
+        0 12px 35px rgba(20, 130, 255, 0.38);
+}
+
+
+
+/* T */
+
+.hero-logo-main {
+    color: white;
+
+    font-size: 40px;
+
+    font-weight: 900;
+}
+
+
+
+/* HINDI BADGE */
+
+.hero-logo-hindi {
+    position: absolute;
+
+    right: -9px;
+
+    bottom: -8px;
+
+    width: 34px;
+
+    height: 34px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 10px;
+
+    background: white;
+
+    color: #116de6;
+
+    border:
+        3px solid #041326;
+
+    font-family:
+        "Nirmala UI",
+        "Mangal",
+        sans-serif;
+
+    font-size: 18px;
+
+    font-weight: 800;
+}
+
+
+
+/* =========================================================
+   MAIN TRANSORA HEADING
+========================================================= */
+
+.hero h1 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size:
+        clamp(
+            72px,
+            8vw,
+            115px
+        );
+
+    line-height: 0.95;
+
+    letter-spacing: -5px;
+
+    font-weight: 900;
+
+    text-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.35);
+}
+
+
+
+/* =========================================================
+   SUBTITLE
+========================================================= */
+
+.hero p {
+    margin:
+        28px 0 0 108px;
+
+    color: #d0deeb;
+
+    font-size: 23px;
+
+    font-weight: 650;
+
+    letter-spacing: 0.2px;
+
+    line-height: 1.5;
+}
+
+
+
+/* Hide old navbar/status visual */
+.connection-status {
+    display: none !important;
+}
+
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .hero {
+        min-height: 360px;
+
+        background-position:
+            66% center;
+    }
+
+
+    .hero-content {
+        padding:
+            38px 24px;
+    }
+
+
+    .hero-brand {
+        gap:
+            17px;
+    }
+
+
+    .hero-logo {
+        width:
+            60px;
+
+        height:
+            60px;
+
+        border-radius:
+            17px;
+    }
+
+
+    .hero-logo-main {
+        font-size:
+            29px;
+    }
+
+
+    .hero-logo-hindi {
+        width:
+            27px;
+
+        height:
+            27px;
+
+        right:
+            -7px;
+
+        bottom:
+            -6px;
+
+        font-size:
+            14px;
+    }
+
+
+    .hero h1 {
+        font-size:
+            56px;
+
+        letter-spacing:
+            -3px;
+    }
+
+
+    .hero p {
+        margin:
+            22px 0 0;
+
+        font-size:
+            18px;
+    }
+
+}
+
+/* =========================================================
+   TRANSLATOR CARD
+========================================================= */
+
+.translator-card {
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(31, 92, 145, 0.85);
+
+    border-radius:
+        var(--radius);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(8, 27, 49, 0.98),
+            rgba(5, 20, 38, 0.98)
+        );
+
+    box-shadow:
+        0 20px 50px
+        rgba(0, 0, 0, 0.28);
+}
+
+
+/* =========================================================
+   MODEL TOOLBAR
+========================================================= */
+
+.translator-toolbar {
+    display: flex;
+    align-items: end;
+
+    gap: 24px;
+
+    padding:
+        21px;
+
+    border-bottom:
+        1px solid
+        rgba(40, 78, 117, 0.55);
+}
+
+
+.field-group {
+    min-width:
+        285px;
+}
+
+
+.field-group label {
+    display: block;
+
+    margin-bottom:
+        8px;
+
+    color:
+        #b7c9da;
+
+    font-size:
+        12px;
+
+    font-weight:
+        800;
+}
+
+
+select {
+    width: 100%;
+
+    min-height:
+        46px;
+
+    padding:
+        10px 38px 10px 14px;
+
+    border:
+        1px solid
+        #25577f;
+
+    border-radius:
+        10px;
+
+    background:
+        #06182c;
+
+    color:
+        white;
+
+    font-size:
+        14px;
+
+    font-weight:
+        700;
+
+    outline:
+        none;
+
+    transition:
+        0.2s ease;
+}
+
+
+select:hover,
+select:focus {
+    border-color:
+        #1d89e8;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(28, 130, 230, 0.12);
+}
+
+
+select option {
+    color:
+        white;
+
+    background:
+        #07192c;
+}
+
+
+/* =========================================================
+   INPUT / OUTPUT GRID
+========================================================= */
+
+.translation-grid {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:
+        15px;
+
+    padding:
+        18px 20px 14px;
+}
+
+
+.translation-pane {
+    overflow:
+        hidden;
+
+    border:
+        1px solid
+        #22517b;
+
+    border-radius:
+        14px;
+
+    background:
+        rgba(3, 16, 32, 0.78);
+}
+
+
+.pane-heading {
+    min-height:
+        48px;
+
+    padding:
+        0 16px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    border-bottom:
+        1px solid
+        #1b4064;
+}
+
+
+.language-title {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        9px;
+}
+
+
+.language-title strong {
+    font-size:
+        14px;
+
+    font-weight:
+        850;
+}
+
+
+.language-icon {
+    width:
+        30px;
+
+    height:
+        30px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    border-radius:
+        8px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #096fff,
+            #18c3eb
+        );
+
+    color:
+        white;
+
+    font-size:
+        11px;
+
+    font-weight:
+        900;
+}
+
+
+.hindi-icon {
+    font-family:
+        "Nirmala UI",
+        "Mangal",
+        sans-serif;
+
+    font-size:
+        16px;
+}
+
+
+#count {
+    color:
+        #8da5bd;
+
+    font-size:
+        10px;
+
+    font-weight:
+        650;
+}
+
+
+/* =========================================================
+   ENGLISH INPUT
+========================================================= */
+
+.text-area-wrap {
+    position:
+        relative;
+}
+
+
+textarea {
+    width:
+        100%;
+
+    min-height:
+        170px;
+
+    padding:
+        24px 50px 20px 19px;
+
+    border:
+        0;
+
+    outline:
+        0;
+
+    resize:
+        vertical;
+
+    background:
+        transparent;
+
+    color:
+        white;
+
+    font-size:
+        21px;
+
+    font-weight:
+        600;
+
+    line-height:
+        1.6;
+}
+
+
+textarea::placeholder {
+    color:
+        #58718c;
+}
+
+
+.clear-input {
+    position:
+        absolute;
+
+    right:
+        12px;
+
+    bottom:
+        12px;
+
+    width:
+        31px;
+
+    height:
+        31px;
+
+    padding:
+        0;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    color:
+        #e3edf7;
+
+    background:
+        #102d49;
+
+    border:
+        1px solid
+        #265379;
+
+    border-radius:
+        8px;
+
+    font-size:
+        20px;
+}
+
+
+.clear-input:hover {
+    background:
+        #174164;
+}
+
+
+/* =========================================================
+   HINDI OUTPUT
+========================================================= */
+
+.translation-output {
+    min-height:
+        132px;
+
+    padding:
+        24px 19px 5px;
+
+    color:
+        white;
+
+    font-family:
+        "Nirmala UI",
+        "Mangal",
+        "Segoe UI",
+        sans-serif;
+
+    font-size:
+        31px;
+
+    font-weight:
+        650;
+
+    line-height:
+        1.7;
+
+    white-space:
+        pre-wrap;
+
+    overflow-wrap:
+        anywhere;
+}
+
+
+.translation-output.placeholder {
+    color:
+        #607b95;
+
+    font-size:
+        20px;
+
+    font-weight:
+        500;
+}
+
+
+.translation-meta {
+    min-height:
+        38px;
+
+    padding:
+        5px 19px 12px;
+
+    color:
+        #758fa9;
+
+    font-size:
+        10px;
+
+    font-weight:
+        650;
+}
+
+
+.copy-button {
+    padding:
+        7px 12px;
+
+    border:
+        1px solid
+        #245174;
+
+    border-radius:
+        8px;
+
+    background:
+        #102943;
+
+    color:
+        white;
+
+    font-size:
+        11px;
+
+    font-weight:
+        750;
+}
+
+
+.copy-button:not(:disabled):hover {
+    background:
+        #174064;
+}
+
+
+/* =========================================================
+   ALERTS
+========================================================= */
+
+.notice,
+.error {
+    margin:
+        0 20px 12px;
+
+    padding:
+        11px 14px;
+
+    border-radius:
+        9px;
+
+    font-size:
+        12px;
+
+    font-weight:
+        650;
+}
+
+
+.notice {
+    color:
+        #ffd67d;
+
+    background:
+        rgba(255, 183, 34, 0.11);
+
+    border:
+        1px solid
+        rgba(255, 183, 34, 0.2);
+}
+
+
+.error {
+    color:
+        #ff9fa2;
+
+    background:
+        rgba(255, 64, 79, 0.11);
+
+    border:
+        1px solid
+        rgba(255, 64, 79, 0.22);
+}
+
+
+/* =========================================================
+   TRANSLATE BUTTON
+========================================================= */
+
+.translate-button {
+    width:
+        calc(100% - 40px);
+
+    min-height:
+        55px;
+
+    margin:
+        1px 20px 12px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        8px;
+
+    border:
+        0;
+
+    border-radius:
+        11px;
+
+    color:
+        white;
+
+    background:
+        linear-gradient(
+            90deg,
+            #2168ff,
+            #118eff,
+            #25c8ed
+        );
+
+    font-size:
+        16px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        0.15px;
+
+    box-shadow:
+        0 12px 30px
+        rgba(18, 126, 255, 0.25);
+
+    transition:
+        0.2s ease;
+}
+
+
+.translate-button:hover {
+    transform:
+        translateY(-1px);
+
+    filter:
+        brightness(1.08);
+
+    box-shadow:
+        0 15px 35px
+        rgba(18, 126, 255, 0.35);
+}
+
+
+/* =========================================================
+   SECONDARY ACTIONS
+========================================================= */
+
+.secondary-actions {
+    padding:
+        0 20px 18px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+    flex-wrap:
+        wrap;
+}
+
+
+.secondary-actions button {
+    padding:
+        10px 15px;
+
+    border:
+        1px solid
+        #24547c;
+
+    border-radius:
+        9px;
+
+    background:
+        #0a223c;
+
+    color:
+        #e1ecf6;
+
+    font-size:
+        11px;
+
+    font-weight:
+        750;
+
+    transition:
+        0.2s ease;
+}
+
+
+.secondary-actions button:hover {
+    background:
+        #113553;
+
+    border-color:
+        #2b7dbc;
+}
+
+
+.include-nllb {
+    margin-left:
+        auto;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        7px;
+
+    color:
+        #91aac1;
+
+    font-size:
+        10px;
+
+    font-weight:
+        650;
+}
+
+
+input[type="checkbox"] {
+    accent-color:
+        #1689ff;
+}
+
+
+#loading {
+    color:
+        #36d8ff;
+
+    font-size:
+        11px;
+
+    font-weight:
+        700;
+}
+
+
+/* =========================================================
+   EXAMPLE SENTENCES
+========================================================= */
+
+.examples-card {
+    margin:
+        14px 0;
+
+    padding:
+        15px 19px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+    flex-wrap:
+        wrap;
+
+    border:
+        1px solid
+        rgba(30, 78, 121, 0.75);
+
+    border-radius:
+        14px;
+
+    background:
+        rgba(7, 25, 47, 0.91);
+}
+
+
+.examples-card > strong {
+    margin-right:
+        8px;
+
+    color:
+        #e6f0f9;
+
+    font-size:
+        12px;
+
+    font-weight:
+        850;
+}
+
+
+.examples-card button {
+    padding:
+        8px 14px;
+
+    border:
+        1px solid
+        #25577e;
+
+    border-radius:
+        30px;
+
+    background:
+        #0b2845;
+
+    color:
+        #d6e3ef;
+
+    font-size:
+        10px;
+
+    font-weight:
+        650;
+
+    transition:
+        0.2s ease;
+}
+
+
+.examples-card button:hover {
+    color:
+        white;
+
+    background:
+        #126feb;
+
+    border-color:
+        #1688ff;
+}
+
+
+/* =========================================================
+   ANALYSIS PANELS
+========================================================= */
+
+.analysis-panel {
+    margin:
+        15px 0;
+
+    padding:
+        21px;
+
+    border:
+        1px solid
+        #205486;
+
+    border-radius:
+        15px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #081d35,
+            #061529
+        );
+
+    box-shadow:
+        0 15px 35px
+        rgba(0, 0, 0, 0.18);
+}
+
+
+.section-title {
+    margin-bottom:
+        17px;
+
+    color:
+        white;
+
+    font-size:
+        21px;
+
+    font-weight:
+        900;
+}
+
+
+/* =========================================================
+   MODEL COMPARISON
+========================================================= */
+
+.compare-grid {
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(210px, 1fr)
+        );
+
+    gap:
+        12px;
+}
+
+
+.compare-card {
+    padding:
+        16px;
+
+    border:
+        1px solid
+        #29577f;
+
+    border-radius:
+        11px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0d2947,
+            #091c34
+        );
+}
+
+
+.compare-card h3 {
+    margin:
+        0 0 12px;
+
+    font-size:
+        14px;
+
+    font-weight:
+        850;
+}
+
+
+.compare-card p[lang="hi"] {
+    margin:
+        0 0 12px;
+
+    font-family:
+        "Nirmala UI",
+        "Mangal",
+        sans-serif;
+
+    font-size:
+        23px;
+
+    font-weight:
+        600;
+
+    line-height:
+        1.6;
+}
+
+
+.compare-card small {
+    color:
+        #8ca4bc;
+
+    font-size:
+        10px;
+
+    font-weight:
+        600;
+}
+
+
+.error-text {
+    color:
+        #ff999d;
+}
+
+
+/* =========================================================
+   ATTENTION
+========================================================= */
+
+.attention-panel {
+    border-color:
+        #157766;
+}
+
+
+.small-description {
+    color:
+        #8ea6ba;
+
+    font-size:
+        11px;
+
+    font-weight:
+        600;
+}
+
+
+.attention-translation {
+    margin:
+        16px 0;
+
+    font-family:
+        "Nirmala UI",
+        "Mangal",
+        sans-serif;
+
+    font-size:
+        27px;
+
+    font-weight:
+        650;
+}
+
+
+.heatmap-scroll {
+    max-height:
+        500px;
+
+    overflow:
+        auto;
+}
+
+
+#heatmap {
+    min-width:
+        420px;
+
+    border-collapse:
+        separate;
+
+    border-spacing:
+        3px;
+}
+
+
+#heatmap th {
+    padding:
+        8px;
+
+    color:
+        #c4d8e8;
+
+    font-size:
+        10px;
+
+    font-weight:
+        750;
+}
+
+
+#heatmap td {
+    min-width:
+        43px;
+
+    height:
+        35px;
+
+    border-radius:
+        4px;
+
+    color:
+        white;
+
+    text-align:
+        center;
+
+    font-size:
+        9px;
+
+    font-weight:
+        700;
+}
+
+
+.legend {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+    margin-top:
+        13px;
+
+    color:
+        #89a2b9;
+
+    font-size:
+        9px;
+
+    font-weight:
+        650;
+}
+
+
+.gradient {
+    width:
+        150px;
+
+    height:
+        8px;
+
+    border-radius:
+        999px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #dff7f0,
+            #36b7ff,
+            #1154d5
+        );
+}
+
+
+/* =========================================================
+   MODEL RESULTS
+========================================================= */
+
+.results-section {
+    margin-top:
+        15px;
+
+    padding:
+        22px;
+
+    border:
+        1px solid
+        #1c4a74;
+
+    border-radius:
+        15px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #071c32,
+            #061427
+        );
+}
+
+
+.results-section h2 {
+    margin:
+        0 0 18px;
+
+    color:
+        white;
+
+    font-size:
+        24px;
+
+    font-weight:
+        900;
+}
+
+
+.results-grid {
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap:
+        11px;
+}
+
+
+.results-grid article {
+    padding:
+        17px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        10px;
+
+    border:
+        1px solid
+        #2a557b;
+
+    border-radius:
+        12px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #102947,
+            #091c34
+        );
+}
+
+
+.results-grid article > strong {
+    margin-bottom:
+        5px;
+
+    font-size:
+        14px;
+
+    font-weight:
+        900;
+}
+
+
+.results-grid article > span {
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    gap:
+        10px;
+
+    color:
+        #9db1c5;
+
+    font-size:
+        10px;
+
+    font-weight:
+        700;
+}
+
+
+.results-grid b {
+    color:
+        #55e4b9;
+
+    font-size:
+        15px;
+
+    font-weight:
+        900;
+}
+
+
+.transformer-result {
+    border-color:
+        #1b73d1 !important;
+}
+
+
+.nllb-result {
+    border-color:
+        #14a787 !important;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    margin-top:
+        18px;
+
+    padding:
+        24px 5px;
+
+    border-top:
+        1px solid
+        rgba(37, 74, 111, 0.45);
+
+    color:
+        #627e98;
+
+    text-align:
+        center;
+
+    font-size:
+        10px;
+
+    font-weight:
+        650;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (
+    max-width: 900px
+) {
+
+    .results-grid {
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (
+    max-width: 700px
+) {
+
+    main {
+        width:
+            calc(100% - 18px);
+    }
+
+
+    .topbar {
+        height:
+            69px;
+
+        padding:
+            0 15px;
+    }
+
+
+    .connection-status {
+        display:
+            none;
+    }
+
+
+    .brand-icon {
+        width:
+            40px;
+
+        height:
+            40px;
+    }
+
+
+    .brand strong {
+        font-size:
+            16px;
+    }
+
+
+    .brand small {
+        font-size:
+            9px;
+    }
+
+
+    .hero {
+        min-height:
+            380px;
+
+        margin-top:
+            12px;
+
+        background-position:
+            67% center;
+    }
+
+
+    .hero-content {
+        padding:
+            34px 23px;
+    }
+
+
+    .hero h1 {
+        font-size:
+            42px;
+
+        letter-spacing:
+            -1.5px;
+    }
+
+
+    .hero p {
+        max-width:
+            300px;
+
+        font-size:
+            15px;
+    }
+
+
+    .translator-toolbar {
+        flex-direction:
+            column;
+
+        align-items:
+            stretch;
+
+        gap:
+            14px;
+    }
+
+
+    .field-group {
+        width:
+            100%;
+
+        min-width:
+            0;
+    }
+
+
+    .translation-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    textarea {
+        min-height:
+            140px;
+
+        font-size:
+            18px;
+    }
+
+
+    .translation-output {
+        min-height:
+            115px;
+
+        font-size:
+            27px;
+    }
+
+
+    .secondary-actions {
+        flex-direction:
+            column;
+
+        align-items:
+            stretch;
+    }
+
+
+    .secondary-actions button {
+        width:
+            100%;
+    }
+
+
+    .include-nllb {
+        margin-left:
+            0;
+    }
+
+
+    .results-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+}
+
+
+/* =========================================================
+   TRANSORA — FINAL TYPOGRAPHY UPGRADE
+========================================================= */
+
+
+/* ---------------------------------------------------------
+   GENERAL WEBSITE FONT
+--------------------------------------------------------- */
+
+body {
+    font-family:
+        "Segoe UI Variable",
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    font-size: 17px;
+    font-weight: 500;
+}
+
+
+/* ---------------------------------------------------------
+   TRANSORA MAIN HEADING
+--------------------------------------------------------- */
+
+.hero h1 {
+    margin: 0;
+
+    font-family:
+        "Segoe UI Variable Display",
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    font-size: clamp(
+        82px,
+        9vw,
+        128px
+    );
+
+    font-weight: 800;
+
+    line-height: 0.92;
+
+    letter-spacing: -6px;
+
+    /* Premium light gradient */
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff 0%,
+            #f3f7ff 55%,
+            #85ddff 100%
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    text-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.25);
+}
+
+
+/* ---------------------------------------------------------
+   HERO SUBTITLE
+--------------------------------------------------------- */
+
+.hero p {
+    margin:
+        27px 0 0 108px;
+
+    color: #d9e5f1;
+
+    font-size: 24px;
+
+    font-weight: 650;
+
+    letter-spacing: 0.3px;
+
+    line-height: 1.5;
+}
+
+
+/* ---------------------------------------------------------
+   HERO LOGO
+--------------------------------------------------------- */
+
+.hero-logo {
+    width: 86px;
+    height: 86px;
+
+    border-radius: 23px;
+}
+
+
+.hero-logo-main {
+    font-size: 42px;
+
+    font-weight: 900;
+}
+
+
+.hero-logo-hindi {
+    width: 35px;
+    height: 35px;
+
+    font-size: 18px;
+
+    font-weight: 850;
+}
+
+
+
+/* =========================================================
+   TRANSLATOR TEXT — SLIGHTLY BIGGER
+========================================================= */
+
+.field-group label {
+    font-size: 14px;
+
+    font-weight: 800;
+}
+
+
+select {
+    font-size: 15px;
+
+    font-weight: 700;
+
+    min-height: 48px;
+}
+
+
+
+/* English / Hindi heading */
+
+.language-title strong {
+    font-size: 16px;
+
+    font-weight: 850;
+}
+
+
+.language-icon {
+    width: 32px;
+
+    height: 32px;
+
+    font-size: 12px;
+}
+
+
+.hindi-icon {
+    font-size: 17px;
+}
+
+
+
+/* Character counter */
+
+#count {
+    font-size: 11px;
+
+    font-weight: 650;
+}
+
+
+
+/* English input */
+
+textarea {
+    font-size: 22px;
+
+    font-weight: 550;
+
+    line-height: 1.6;
+}
+
+
+textarea::placeholder {
+    font-size: 21px;
+}
+
+
+
+/* Hindi output */
+
+.translation-output {
+    font-size: 32px;
+
+    font-weight: 600;
+}
+
+
+.translation-output.placeholder {
+    font-size: 21px;
+}
+
+
+
+/* Metadata */
+
+.translation-meta {
+    font-size: 11px;
+}
+
+
+
+/* Copy button */
+
+.copy-button {
+    font-size: 12px;
+
+    font-weight: 750;
+}
+
+
+
+/* =========================================================
+   MAIN BUTTON
+========================================================= */
+
+.translate-button {
+    min-height: 58px;
+
+    font-size: 17px;
+
+    font-weight: 850;
+}
+
+
+
+/* =========================================================
+   COMPARE / ATTENTION BUTTONS
+========================================================= */
+
+.secondary-actions button {
+    font-size: 13px;
+
+    font-weight: 750;
+
+    padding:
+        11px 17px;
+}
+
+
+.include-nllb {
+    font-size: 12px;
+
+    font-weight: 650;
+}
+
+
+
+/* =========================================================
+   EXAMPLE SENTENCES
+========================================================= */
+
+.examples-card > strong {
+    font-size: 14px;
+
+    font-weight: 850;
+}
+
+
+.examples-card button {
+    font-size: 12px;
+
+    font-weight: 650;
+
+    padding:
+        9px 15px;
+}
+
+
+
+/* =========================================================
+   MODEL COMPARISON
+========================================================= */
+
+.section-title {
+    font-size: 24px;
+
+    font-weight: 850;
+}
+
+
+.compare-card h3 {
+    font-size: 16px;
+
+    font-weight: 850;
+}
+
+
+.compare-card p[lang="hi"] {
+    font-size: 25px;
+}
+
+
+.compare-card small {
+    font-size: 11px;
+}
+
+
+
+/* =========================================================
+   ATTENTION
+========================================================= */
+
+.small-description {
+    font-size: 13px;
+}
+
+
+.attention-translation {
+    font-size: 28px;
+}
+
+
+
+/* =========================================================
+   MODEL RESULTS
+========================================================= */
+
+.results-section h2 {
+    font-size: 28px;
+
+    font-weight: 850;
+}
+
+
+.results-grid article > strong {
+    font-size: 16px;
+
+    font-weight: 850;
+}
+
+
+.results-grid article > span {
+    font-size: 12px;
+}
+
+
+.results-grid b {
+    font-size: 17px;
+}
+
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    font-size: 12px;
+
+    font-weight: 650;
+}
+
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .hero h1 {
+        font-size: 58px;
+
+        letter-spacing: -3px;
+    }
+
+
+    .hero-logo {
+        width: 61px;
+        height: 61px;
+    }
+
+
+    .hero-logo-main {
+        font-size: 30px;
+    }
+
+
+    .hero p {
+        margin:
+            22px 0 0;
+
+        font-size: 18px;
+    }
+
+
+    textarea {
+        font-size: 19px;
+    }
+
+
+    .translation-output {
+        font-size: 28px;
+    }
+
+}
+
+/* =========================
+   BIGGER ATTENTION MAP
+   ========================= */
+
+#alignment,
+.attention-section,
+.attention-panel {
+  min-height: 340px;
+}
+
+.heatmap-scroll {
+  overflow-x: auto;
+  overflow-y: auto;
+  padding: 18px 10px 14px 10px;
+  max-height: none;
+}
+
+#heatmap {
+  border-collapse: separate;
+  border-spacing: 6px;
+  margin-top: 14px;
+}
+
+#heatmap th {
+  padding: 8px 10px;
+  font-size: 13px;
+  font-weight: 700;
+  min-width: 60px;
+  text-align: center;
+  color: #eaf6ff;
+  white-space: nowrap;
+}
+
+#heatmap td {
+  min-width: 56px;
+  height: 46px;
+  padding: 6px 8px;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  border-radius: 8px;
+  color: #ffffff;
+}
+
+#attention-translation {
+  font-size: 34px;
+  font-weight: 800;
+  margin: 12px 0 18px 0;
+  color: #ffffff;
+}
+
+.legend {
+  margin-top: 16px;
+  font-size: 13px;
+  gap: 12px;
+}
+
+.legend .gradient {
+  width: 170px;
+  height: 10px;
+  border-radius: 999px;
+}
+
+/* =========================================================
+   TRANSORA — POLISHED ATTENTION SECTION
+========================================================= */
+
+.attention-panel {
+    margin-top: 18px;
+
+    padding: 28px 30px 30px;
+
+    min-height: 360px;
+
+    border:
+        1px solid rgba(22, 168, 138, 0.55);
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(6, 31, 55, 0.98),
+            rgba(4, 19, 37, 0.98)
+        );
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.22);
+}
+
+
+/* ATTENTION TITLE */
+
+.attention-panel .section-title {
+    margin-bottom: 10px;
+
+    font-size: 27px;
+
+    font-weight: 900;
+
+    letter-spacing: -0.4px;
+
+    color: #ffffff;
+}
+
+
+/* SMALL MODEL LABEL */
+
+.small-description {
+    margin: 0 0 14px;
+
+    color: #91abc1;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+/* HINDI TRANSLATION */
+
+.attention-translation {
+    margin: 10px 0 22px;
+
+    color: #ffffff;
+
+    font-family:
+        "Nirmala UI",
+        "Mangal",
+        "Segoe UI",
+        sans-serif;
+
+    font-size: 36px;
+
+    font-weight: 750;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   HEATMAP WRAPPER
+========================================================= */
+
+.heatmap-scroll {
+    width: 100%;
+
+    overflow-x: auto;
+    overflow-y: visible;
+
+    padding:
+        8px 4px 10px;
+
+    scrollbar-width: thin;
+}
+
+
+/* =========================================================
+   HEATMAP TABLE
+========================================================= */
+
+#heatmap {
+    border-collapse: separate;
+
+    border-spacing: 7px;
+
+    margin-top: 8px;
+
+    min-width: 520px;
+}
+
+
+/* SOURCE + TARGET TOKEN LABELS */
+
+#heatmap th {
+    min-width: 66px;
+
+    padding:
+        10px 12px;
+
+    color: #e8f3fb;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    text-align: center;
+
+    white-space: nowrap;
+}
+
+
+/* ATTENTION CELLS */
+
+#heatmap td {
+    min-width: 64px;
+
+    height: 50px;
+
+    padding:
+        8px 10px;
+
+    border-radius: 9px;
+
+    color: #ffffff;
+
+    text-align: center;
+
+    font-size: 13px;
+
+    font-weight: 750;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.05);
+
+    box-shadow:
+        inset 0 0 12px
+        rgba(255, 255, 255, 0.02);
+
+    transition:
+        transform 0.18s ease,
+        filter 0.18s ease;
+}
+
+
+/* SMALL HOVER EFFECT */
+
+#heatmap td:hover {
+    transform:
+        translateY(-2px);
+
+    filter:
+        brightness(1.15);
+}
+
+
+/* =========================================================
+   LEGEND
+========================================================= */
+
+.legend {
+    margin-top: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    color: #9ab0c5;
+
+    font-size: 12px;
+
+    font-weight: 650;
+}
+
+
+.legend .gradient {
+    width: 180px;
+
+    height: 10px;
+
+    border-radius: 999px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #d9fbf5,
+            #55d6ff,
+            #1d6dff
+        );
+
+    box-shadow:
+        0 0 12px
+        rgba(38, 179, 255, 0.18);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .attention-panel {
+        padding:
+            22px 18px 24px;
+    }
+
+
+    .attention-panel .section-title {
+        font-size:
+            23px;
+    }
+
+
+    .small-description {
+        font-size:
+            12px;
+    }
+
+
+    .attention-translation {
+        font-size:
+            30px;
+    }
+
+
+    #heatmap {
+        min-width:
+            470px;
+    }
+
+
+    #heatmap th {
+        min-width:
+            58px;
+
+        padding:
+            8px 9px;
+
+        font-size:
+            11px;
+    }
+
+
+    #heatmap td {
+        min-width:
+            56px;
+
+        height:
+            44px;
+
+        font-size:
+            11px;
+    }
+
+
+    .legend .gradient {
+        width:
+            140px;
+    }
+}
+
+/* =========================================================
+   FINAL ATTENTION SIZE BOOST
+========================================================= */
+
+.attention-panel {
+    min-height: 400px;
+    padding: 32px 34px 34px;
+}
+
+
+/* Attention title */
+
+.attention-panel .section-title {
+    font-size: 30px;
+}
+
+
+/* GRU + Bahdanau label */
+
+.small-description {
+    font-size: 15px;
+}
+
+
+/* Hindi translation */
+
+.attention-translation,
+#attention-translation {
+    font-size: 40px;
+    margin: 14px 0 26px;
+}
+
+
+/* Bigger table */
+
+#heatmap {
+    min-width: 590px;
+    border-spacing: 8px;
+}
+
+
+/* English / Hindi token labels */
+
+#heatmap th {
+    min-width: 72px;
+    padding: 11px 13px;
+
+    font-size: 14px;
+    font-weight: 800;
+}
+
+
+/* Attention value boxes */
+
+#heatmap td {
+    min-width: 70px;
+    height: 56px;
+
+    padding: 9px 11px;
+
+    font-size: 14px;
+    font-weight: 800;
+
+    border-radius: 10px;
+}
+
+
+/* More space around heatmap */
+
+.heatmap-scroll {
+    padding: 12px 6px 14px;
+}
+
+
+/* Legend */
+
+.legend {
+    margin-top: 22px;
+
+    font-size: 13px;
+}
+
+
+/* Gradient legend */
+
+.legend .gradient {
+    width: 200px;
+    height: 11px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .attention-panel {
+        min-height: 350px;
+        padding: 24px 19px 26px;
+    }
+
+    .attention-panel .section-title {
+        font-size: 25px;
+    }
+
+    .attention-translation,
+    #attention-translation {
+        font-size: 32px;
+    }
+
+    #heatmap {
+        min-width: 500px;
+    }
+
+    #heatmap th {
+        min-width: 61px;
+        font-size: 12px;
+    }
+
+    #heatmap td {
+        min-width: 59px;
+        height: 47px;
+        font-size: 12px;
+    }
+
+}
+
+/* =========================================================
+   TRANSORA IMAGE LOGO
+========================================================= */
+
+.hero-logo {
+    width: 105px;
+    height: 105px;
+
+    flex: 0 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
+
+    border-radius: 24px;
+
+    box-shadow: none;
+
+    overflow: hidden;
+}
+
+.hero-logo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    border-radius: 24px;
+}
+
+
+/* Hide old CSS logo parts if they still exist */
+
+.hero-logo-main,
+.hero-logo-hindi {
+    display: none;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+    .hero-logo {
+        width: 72px;
+        height: 72px;
+
+        border-radius: 18px;
+    }
+
+    .hero-logo img {
+        border-radius: 18px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .hero .hero-logo {
+        width: 130px;
+        height: 130px;
+        min-width: 130px;
+        flex: 0 0 130px;
+    }
+}
+
+@media (max-width: 700px) {
+    .hero .hero-logo {
+        width: 95px;
+        height: 95px;
+        min-width: 95px;
+        flex: 0 0 95px;
+    }
+}
+
+.hero .hero-logo {
+    width: 160px;
+    height: 160px;
+    min-width: 160px;
+    flex: 0 0 160px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
+    border: none;
+    border-radius: 28px;
+    overflow: visible;
+}
+
+.hero .hero-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* =========================================
+   ALIGN TRANSORA + SUBTITLE SAME LEFT EDGE
+========================================= */
+
+.hero .hero-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.hero .hero-title {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    text-align: left !important;
+}
+
+.hero .hero-subtitle {
+    margin: 20px 0 0 0 !important;
+    padding-left: 0 !important;
+    text-align: left !important;
+    align-self: flex-start;
+}
+
+/* Center subtitle under Transora */
+
+.hero .hero-text {
+    width: fit-content;
+    align-items: stretch;
+}
+
+.hero .hero-subtitle {
+    width: 100%;
+    margin: 22px 0 0 0 !important;
+    padding: 0 !important;
+
+    text-align: center !important;
+    align-self: stretch;
+}
+
+/* =========================================================
+   TRANSORA — LARGER UI TEXT
+========================================================= */
+
+/* Model / Decoding labels */
+.field-group label {
+    font-size: 18px !important;
+}
+
+/* Dropdowns */
+select {
+    font-size: 19px !important;
+    min-height: 56px;
+}
+
+/* English / Hindi headings */
+.language-title strong {
+    font-size: 20px !important;
+}
+
+/* EN / अ icons */
+.language-icon {
+    font-size: 15px !important;
+    width: 36px;
+    height: 36px;
+}
+
+.hindi-icon {
+    font-size: 21px !important;
+}
+
+/* Character count */
+#count {
+    font-size: 14px !important;
+}
+
+/* English input */
+textarea {
+    font-size: 28px !important;
+    line-height: 1.55;
+}
+
+textarea::placeholder {
+    font-size: 27px !important;
+}
+
+/* Hindi output */
+.translation-output {
+    font-size: 39px !important;
+}
+
+/* Placeholder output */
+.translation-output.placeholder {
+    font-size: 27px !important;
+}
+
+/* Ready / greedy / latency */
+.translation-meta {
+    font-size: 14px !important;
+}
+
+/* Copy button */
+.copy-button {
+    font-size: 15px !important;
+    padding: 9px 14px;
+}
+
+/* Translate button */
+.translate-button {
+    font-size: 21px !important;
+    min-height: 62px;
+}
+
+/* Compare + Attention buttons */
+.secondary-actions button {
+    font-size: 17px !important;
+    padding: 14px 22px;
+}
+
+/* Include NLLB */
+.include-nllb {
+    font-size: 15px !important;
+}
+
+/* Try heading */
+.examples-card > strong {
+    font-size: 18px !important;
+}
+
+/* Example buttons */
+.examples-card button {
+    font-size: 16px !important;
+    padding: 12px 19px;
+}
+
+/* Model Results heading */
+.results-section h2 {
+    font-size: 35px !important;
+}
+
+/* GRU / Attention / Transformer / NLLB */
+.results-grid article > strong {
+    font-size: 21px !important;
+}
+
+/* BLEU / chrF labels */
+.results-grid article > span {
+    font-size: 16px !important;
+}
+
+/* Metric values */
+.results-grid b {
+    font-size: 22px !important;
+}
+
+/* Comparison section */
+.section-title {
+    font-size: 29px !important;
+}
+
+/* Compare model card headings */
+.compare-card h3 {
+    font-size: 19px !important;
+}
+
+/* Compare Hindi output */
+.compare-card p[lang="hi"] {
+    font-size: 29px !important;
+}
+
+/* Compare metadata */
+.compare-card small {
+    font-size: 13px !important;
+}

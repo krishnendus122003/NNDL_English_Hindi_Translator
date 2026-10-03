@@ -1,0 +1,2 @@
+model,decoding,best_epoch,best_validation_loss,validation_bleu,validation_chrf,parameters
+GRU Seq2Seq Baseline,Greedy,3,6.664642202495732,1.6036412716065567,15.688910807270299,18765440

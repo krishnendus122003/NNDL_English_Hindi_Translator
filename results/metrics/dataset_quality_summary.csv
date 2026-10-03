@@ -1,0 +1,9 @@
+metric,value
+training_rows,1659083
+validation_rows,520
+test_rows,2507
+missing_english,0
+missing_hindi,0
+empty_english,721
+empty_hindi,6047
+exact_duplicate_pairs,219386

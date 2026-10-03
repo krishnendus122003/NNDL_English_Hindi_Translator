@@ -1,0 +1,13 @@
+metric,value
+english_mean,15.890133333333333
+english_median,13.0
+english_p90,35.0
+english_p95,42.0
+english_p99,56.0
+english_max,167.0
+hindi_mean,16.996536666666668
+hindi_median,13.0
+hindi_p90,38.0
+hindi_p95,46.0
+hindi_p99,59.0
+hindi_max,331.0
