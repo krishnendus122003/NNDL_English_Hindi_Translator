@@ -295,7 +295,7 @@ The Transora interface supports:
 - Clear input
 - Long-input warnings
 - Error handling
-
+- The frontend communicates with the FastAPI backend for translation, model comparison, attention visualization, and input validation.
 ---
 
 ## Attention Visualization
